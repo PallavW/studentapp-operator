@@ -1,0 +1,12 @@
+apiVersion: app.pallavw.com/v1alpha1
+kind: Pre-Install
+metadata:
+  labels:
+    app.kubernetes.io/name: pre-install
+    app.kubernetes.io/instance: pre-install-sample
+    app.kubernetes.io/part-of: studentapp
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: studentapp
+  name: pre-install-sample
+spec:
+  # TODO(user): Add fields here

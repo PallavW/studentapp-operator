@@ -1,0 +1,12 @@
+apiVersion: app.pallavw.com/v1alpha1
+kind: Database
+metadata:
+  labels:
+    app.kubernetes.io/name: database
+    app.kubernetes.io/instance: database-sample
+    app.kubernetes.io/part-of: studentapp
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: studentapp
+  name: database-sample
+spec:
+  # TODO(user): Add fields here

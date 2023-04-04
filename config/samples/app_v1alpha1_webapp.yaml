@@ -1,0 +1,12 @@
+apiVersion: app.pallavw.com/v1alpha1
+kind: WebApp
+metadata:
+  labels:
+    app.kubernetes.io/name: webapp
+    app.kubernetes.io/instance: webapp-sample
+    app.kubernetes.io/part-of: studentapp
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: studentapp
+  name: webapp-sample
+spec:
+  # TODO(user): Add fields here

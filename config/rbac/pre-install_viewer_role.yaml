@@ -1,0 +1,27 @@
+# permissions for end users to view pre-installs.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: pre-install-viewer-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: studentapp
+    app.kubernetes.io/part-of: studentapp
+    app.kubernetes.io/managed-by: kustomize
+  name: pre-install-viewer-role
+rules:
+- apiGroups:
+  - app.pallavw.com
+  resources:
+  - pre-installs
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - app.pallavw.com
+  resources:
+  - pre-installs/status
+  verbs:
+  - get

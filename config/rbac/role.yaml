@@ -1,0 +1,142 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: manager-role
+rules:
+  ##
+  ## Base operator rules
+  ##
+  - apiGroups:
+      - ""
+    resources:
+      - secrets
+      - pods
+      - pods/exec
+      - pods/log
+    verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+  - apiGroups:
+      - apps
+    resources:
+      - deployments
+      - daemonsets
+      - replicasets
+      - statefulsets
+    verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+  ##
+  ## Rules for app.pallavw.com/v1alpha1, Kind: StudentApp
+  ##
+  - apiGroups:
+      - app.pallavw.com
+    resources:
+      - studentapps
+      - studentapps/status
+      - studentapps/finalizers
+    verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+  ##
+  ## Rules for app.pallavw.com/v1alpha1, Kind: Pre-Install
+  ##
+  - apiGroups:
+      - app.pallavw.com
+    resources:
+      - pre-installs
+      - pre-installs/status
+      - pre-installs/finalizers
+    verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+  ##
+  ## Rules for app.pallavw.com/v1alpha1, Kind: Storage
+  ##
+  - apiGroups:
+      - app.pallavw.com
+    resources:
+      - storages
+      - storages/status
+      - storages/finalizers
+    verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+  ##
+  ## Rules for app.pallavw.com/v1alpha1, Kind: Database
+  ##
+  - apiGroups:
+      - app.pallavw.com
+    resources:
+      - databases
+      - databases/status
+      - databases/finalizers
+    verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+  ##
+  ## Rules for app.pallavw.com/v1alpha1, Kind: WebApp
+  ##
+  - apiGroups:
+      - app.pallavw.com
+    resources:
+      - webapps
+      - webapps/status
+      - webapps/finalizers
+    verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+  ##
+  ## Rules for app.pallavw.com/v1alpha1, Kind: Post-Install
+  ##
+  - apiGroups:
+      - app.pallavw.com
+    resources:
+      - post-installs
+      - post-installs/status
+      - post-installs/finalizers
+    verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+#+kubebuilder:scaffold:rules
