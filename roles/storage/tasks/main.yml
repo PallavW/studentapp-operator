@@ -1,2 +1,30 @@
 ---
-# tasks file for Storage
+  - name: "create pv/sapp-vol of size {{storage.createVolumeSize}} if register"
+    kubernetes.core.k8s:
+      state: present
+      definition: "{{ lookup('file','../templates/pv.yaml') | from_yaml }}"
+    when: createVolumeSize is defined
+
+  - name: register pvc/sapp-vol state
+    kubernetes.core.k8s_info:
+      api_version: v1
+      kind: Service
+      name: web
+      namespace: testing
+    register: pvc_status
+
+  - name: register fail if pvc/sapp-vol state is 'absent'
+    fail:
+      msg: "pvc/sapp-vol not present"
+    when: pvc_status == 'absent'
+
+  - name: set CR status to Failed
+    operator_sdk.util.k8s_status:
+      api_version: app.example.com/v1
+      kind: Studentapp
+      name: "{{ ansible_operator_meta.name }}"
+      namespace: "{{ ansible_operator_meta.namespace }}"
+      status:
+        status: 'Failed'
+        reason: 'pvc/sapp-vol not found'
+    when: pvc_status == 'absent'

@@ -1,2 +1,13 @@
 ---
-# tasks file for Pre-Install
+ 	- name: set CR status to 'InProgress'
+	  operator_sdk.util.k8s_status:
+      api_version: app.example.com/v1
+			kind: Studentapp
+			name: "{{ ansible_operator_meta.name }}"
+			namespace: "{{ ansible_operator_meta.namespace }}"
+			status:
+				status: 'InProgress'
+	- name: set facts
+	  set_fact:
+	    createVolumeSize: "{{ storage.createVolumeSize }}"
+

@@ -1,2 +1,25 @@
 ---
-# tasks file for Database
+	- name: configmap/sapp-{{metadata.name}}-database from templates
+		kubernetes.core.k8s:
+			state: present
+			definition: ""
+
+	- name: secret/sapp-{{metadata.name}}-database from templates
+		kubernetes.core.k8s:
+			state: present
+			definition: ""
+
+	- name: pvc/sapp-{{metadata.name}}-pvc from templates
+		kubernetes.core.k8s:
+			state: present
+			definition: ""
+
+	- name: svc/sapp-{{metadata.name}}-database from templates
+		kubernetes.core.k8s:
+			state: present
+			definition: ""
+
+	- name: deploy/sapp-{{metadata.name}}-database from templates
+		kubernetes.core.k8s:
+			state: present
+			definition: ""

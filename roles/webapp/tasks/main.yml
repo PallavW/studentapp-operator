@@ -1,2 +1,10 @@
 ---
-# tasks file for WebApp
+	- name: svc/sapp-{{metadata.name}}-webapp from templates
+		kubernetes.core.k8s:
+			state: present
+			definition: ""
+
+	- name: deploy/sapp-{{metadata.name}}-webapp from templates
+		kubernetes.core.k8s:
+			state: present
+			definition: ""
